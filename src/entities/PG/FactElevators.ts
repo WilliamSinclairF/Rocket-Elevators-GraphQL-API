@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 
 @Index('fact_elevators_pkey', ['id'], { unique: true })
-@ObjectType()
+@ObjectType('fact_elevators')
 @Entity('fact_elevators', { database: process.env.PGDB, schema: 'public' })
 export class FactElevators extends BaseEntity {
   @Field()

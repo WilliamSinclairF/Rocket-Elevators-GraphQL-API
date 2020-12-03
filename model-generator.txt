@@ -1,9 +1,0 @@
-Usage: typeorm-model-generator -h <host> -d <database> -p [port] -u <user> -x
-[password] -e [engine]
-
-
-PG: 
-npx typeorm-model-generator -h localhost -d dwh_development -p 5432 -u william -x root -e postgres
-
-Mysql:
-npx typeorm-model-generator -d app_development -p 3306 -u root -x root -e mysql

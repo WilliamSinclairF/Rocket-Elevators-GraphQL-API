@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 
 @Index('dim_customers_pkey', ['id'], { unique: true })
-@ObjectType()
+@ObjectType('dim_customers')
 @Entity('dim_customers', { database: process.env.PGDB, schema: 'public' })
 export class DimCustomers extends BaseEntity {
   @Field()

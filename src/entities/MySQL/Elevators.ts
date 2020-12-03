@@ -13,7 +13,7 @@ import { FactInterventions } from '../PG/FactInterventions';
 import { Columns } from './Columns';
 
 @Index('index_elevators_on_column_id', ['columnId'], {})
-@ObjectType()
+@ObjectType('elevators')
 @Entity('elevators', {
   database: process.env.MYSQLDB,
   schema: process.env.MYSQLDB,

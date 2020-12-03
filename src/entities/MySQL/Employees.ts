@@ -12,7 +12,7 @@ import { FactInterventions } from '../PG/FactInterventions';
 import { Buildings } from './Buildings';
 
 @Index('index_employees_on_user_id', ['userId'], {})
-@ObjectType()
+@ObjectType('employees')
 @Entity('employees', { schema: process.env.MYSQLDB })
 export class Employees extends BaseEntity {
   @Field(() => ID)

@@ -14,7 +14,7 @@ import { Customers } from './Customers';
 
 @Index('index_addresses_on_building_id', ['buildingId'], {})
 @Index('index_addresses_on_customer_id', ['customerId'], {})
-@ObjectType()
+@ObjectType('addresses')
 @Entity('addresses', {
   database: process.env.MYSQLDB,
   schema: process.env.MYSQLDB,

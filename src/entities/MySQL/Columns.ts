@@ -15,7 +15,7 @@ import { Batteries } from './Batteries';
 import { Elevators } from './Elevators';
 
 @Index('index_columns_on_battery_id', ['batteryId'], {})
-@ObjectType()
+@ObjectType('columns')
 @Entity('columns', { schema: process.env.MYSQLDB })
 export class Columns extends BaseEntity {
   @Field(() => ID)
@@ -46,9 +46,11 @@ export class Columns extends BaseEntity {
   @Column('varchar', { name: 'notes', nullable: true, length: 255 })
   notes: string;
 
+  @Field()
   @Column('datetime', { name: 'created_at' })
   createdAt: Date;
 
+  @Field()
   @Column('datetime', { name: 'updated_at' })
   updatedAt: Date;
 
@@ -59,6 +61,7 @@ export class Columns extends BaseEntity {
 
   @Field(() => [Elevators])
   @OneToMany(() => Elevators, elevators => elevators.column)
+  @JoinColumn({ name: 'id', referencedColumnName: 'column_id' })
   elevators: Elevators[];
 
   @Field(() => Int)

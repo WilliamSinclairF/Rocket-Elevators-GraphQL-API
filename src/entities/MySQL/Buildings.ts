@@ -22,7 +22,7 @@ import { Employees } from './Employees';
 @Index('index_buildings_on_building_detail_id', ['buildingDetailId'], {})
 @Index('index_buildings_on_customer_id', ['customerId'], {})
 @Index('index_buildings_on_technical_contact_id', ['technicalContactId'], {})
-@ObjectType()
+@ObjectType('buildings')
 @Entity('buildings', { schema: process.env.MYSQLDB })
 export class Buildings extends BaseEntity {
   @Field(() => ID)

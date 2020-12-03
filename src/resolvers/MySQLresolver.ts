@@ -1,6 +1,8 @@
 import { Addresses } from '../entities/MySQL/Addresses';
 import { Buildings } from '../entities/MySQL/Buildings';
 import { Arg, Query, Resolver } from 'type-graphql';
+import { Users } from '../entities/MySQL/Users';
+import { Customers } from '../entities/MySQL/Customers';
 
 @Resolver()
 export class MySQLresolver {
@@ -15,8 +17,32 @@ export class MySQLresolver {
     return Buildings.findOneOrFail({ where: { id: id } });
   }
 
+  // @Query(() => [Buildings])
+  // buildings() {
+  //   return Buildings.find({
+  //     join: {
+  //       alias: 'building',
+  //       leftJoinAndSelect: {
+  //         buildingDetails: 'building.buildingDetails',
+  //         adminContact: 'building.adminContact',
+  //         technicalContact: 'building.technicalContact',
+  //         address: 'building.address',
+  //         batteries: 'building.batteries',
+  //         columns: 'batteries.columns',
+  //         elevators: 'columns.elevators',
+  //       },
+  //     },
+  //   });
+  // }
+
   @Query(() => [Buildings])
-  buildings() {
+  async buildings(@Arg('email') email: String): Promise<Buildings[]> {
+    const user = await Users.findOneOrFail({
+      where: { email: email },
+    });
+    const customer = await Customers.findOneOrFail({
+      where: { userId: user.id },
+    });
     return Buildings.find({
       join: {
         alias: 'building',
@@ -29,6 +55,9 @@ export class MySQLresolver {
           columns: 'batteries.columns',
           elevators: 'columns.elevators',
         },
+      },
+      where: {
+        customerId: customer.id,
       },
     });
   }

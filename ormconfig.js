@@ -12,7 +12,7 @@ module.exports = [
     entities: [
       process.env.NODE_ENV === 'development'
         ? './src/entities/MySQL/*.*'
-        : './dist/entities/MySQL/*.*',
+        : './dist/entities/MySQL/*.js',
     ],
   },
   {
@@ -29,7 +29,7 @@ module.exports = [
     entities: [
       process.env.NODE_ENV === 'development'
         ? './src/entities/PG/*.*'
-        : './dist/entities/PG/*.*',
+        : './dist/entities/PG/*.js',
     ],
   },
 ];

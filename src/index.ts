@@ -7,7 +7,10 @@ import { MySQLresolver } from './resolvers/MySQLresolver';
 import { InterventionResolvers } from './resolvers/InterventionResolvers';
 
 (async () => {
+  const cors = require('cors');
   const app = express();
+  app.use(cors());
+
   require('dotenv').config({ path: __dirname + '/.env' });
 
   await createConnections();

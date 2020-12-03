@@ -13,7 +13,7 @@ import { Elevators } from '../MySQL/Elevators';
 import { Employees } from '../MySQL/Employees';
 
 @Index('fact_interventions_pkey', ['id'], { unique: true })
-@ObjectType()
+@ObjectType('fact_interventions')
 @Entity('fact_interventions', { database: process.env.PGDB, schema: 'public' })
 export class FactInterventions extends BaseEntity {
   @Field(() => ID)

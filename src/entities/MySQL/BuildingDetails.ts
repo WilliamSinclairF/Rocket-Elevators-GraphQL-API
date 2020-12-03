@@ -10,7 +10,7 @@ import {
 import { Buildings } from './Buildings';
 
 @Index('index_building_details_on_building_id', ['buildingId'], {})
-@ObjectType()
+@ObjectType('building_details')
 @Entity('building_details', { schema: process.env.MYSQLDB })
 export class BuildingDetails {
   @Field(() => ID)

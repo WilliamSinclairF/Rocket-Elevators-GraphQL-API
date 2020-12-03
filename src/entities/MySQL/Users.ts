@@ -1,5 +1,11 @@
 import { Field, ObjectType } from 'type-graphql';
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  Index,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Customers } from './Customers';
 
 @Index('index_users_on_email', ['email'], { unique: true })
@@ -7,8 +13,8 @@ import { Customers } from './Customers';
   unique: true,
 })
 @Entity('users', { schema: process.env.MYSQLDB })
-@ObjectType()
-export class Users {
+@ObjectType('users')
+export class Users extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })
   id: string;
 

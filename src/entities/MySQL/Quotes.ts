@@ -1,7 +1,9 @@
+import { ObjectType } from 'type-graphql';
 import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 @Index('index_quotes_on_user_id', ['userId'], {})
 @Entity('quotes', { schema: process.env.MYSQLDB })
+@ObjectType('quotes')
 export class Quotes {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })
   id: string;

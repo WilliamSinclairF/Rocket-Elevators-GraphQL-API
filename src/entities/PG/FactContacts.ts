@@ -2,7 +2,7 @@ import { Field, ObjectType } from 'type-graphql';
 import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 @Index('fact_contacts_pkey', ['id'], { unique: true })
-@ObjectType()
+@ObjectType('fact_contacts')
 @Entity('fact_contacts', { database: process.env.PGDB, schema: 'public' })
 export class FactContacts {
   @Field()
