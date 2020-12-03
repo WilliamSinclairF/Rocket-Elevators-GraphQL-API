@@ -7,9 +7,7 @@ import { MySQLresolver } from './resolvers/MySQLresolver';
 import { InterventionResolvers } from './resolvers/InterventionResolvers';
 
 (async () => {
-  const cors = require('cors');
   const app = express();
-  app.use(cors());
 
   require('dotenv').config({ path: __dirname + '/.env' });
 
@@ -25,7 +23,7 @@ import { InterventionResolvers } from './resolvers/InterventionResolvers';
     introspection: true,
   });
 
-  apolloServer.applyMiddleware({ app, cors: false });
+  apolloServer.applyMiddleware({ app, cors: true });
   const port = process.env.PORT || 4000;
   app.listen(port, () => {
     console.log(`server started at http://localhost:${port}/graphql`);
