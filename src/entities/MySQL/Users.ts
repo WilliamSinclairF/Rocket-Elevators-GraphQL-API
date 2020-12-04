@@ -26,12 +26,15 @@ export class Users extends BaseEntity {
   @Field(() => Customers, { nullable: true })
   customer: Customers;
 
+  @Field(() => String)
   @Column('varchar', { name: 'first_name', nullable: true, length: 255 })
   firstName: string | null;
 
+  @Field(() => String)
   @Column('varchar', { name: 'last_name', nullable: true, length: 255 })
   lastName: string | null;
 
+  @Field(() => String)
   @Column('varchar', { name: 'title', nullable: true, length: 255 })
   title: string | null;
 
