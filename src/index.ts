@@ -8,6 +8,9 @@ import { InterventionResolvers } from './resolvers/InterventionResolvers';
 
 (async () => {
   try {
+    if (process.env.NODE_ENV === 'development') {
+      require('dotenv').config();
+    }
     const app = express();
     await createConnections([
       {
@@ -60,8 +63,7 @@ import { InterventionResolvers } from './resolvers/InterventionResolvers';
     app.listen(port, () => {
       console.log(`server started at http://localhost:${port}/graphql`);
     });
-  }
-  catch (e) {
-    console.log(e)
+  } catch (e) {
+    console.log(e);
   }
 })();

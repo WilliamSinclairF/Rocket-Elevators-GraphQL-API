@@ -29,6 +29,8 @@ export class MySQLresolver {
       join: {
         alias: 'building',
         leftJoinAndSelect: {
+          customer: 'building.customer',
+          user: 'customer.user',
           buildingDetails: 'building.buildingDetails',
           adminContact: 'building.adminContact',
           technicalContact: 'building.technicalContact',
