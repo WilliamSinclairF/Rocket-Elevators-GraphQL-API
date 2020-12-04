@@ -17,24 +17,6 @@ export class MySQLresolver {
     return Buildings.findOneOrFail({ where: { id: id } });
   }
 
-  // @Query(() => [Buildings])
-  // buildings() {
-  //   return Buildings.find({
-  //     join: {
-  //       alias: 'building',
-  //       leftJoinAndSelect: {
-  //         buildingDetails: 'building.buildingDetails',
-  //         adminContact: 'building.adminContact',
-  //         technicalContact: 'building.technicalContact',
-  //         address: 'building.address',
-  //         batteries: 'building.batteries',
-  //         columns: 'batteries.columns',
-  //         elevators: 'columns.elevators',
-  //       },
-  //     },
-  //   });
-  // }
-
   @Query(() => [Buildings])
   async buildings(@Arg('email') email: String): Promise<Buildings[]> {
     const user = await Users.findOneOrFail({
