@@ -45,4 +45,25 @@ export class MySQLresolver {
       },
     });
   }
+
+  @Query(() => Customers)
+  async customer(@Arg('email') email: String): Promise<Customers> {
+    const user = await Users.findOneOrFail({
+      where: { email: email },
+    });
+    const customer = await Customers.findOneOrFail({
+      where: { userId: user.id },
+    });
+    return Customers.findOneOrFail({
+      join: {
+        alias: 'customer',
+        leftJoinAndSelect: {
+          user: 'customer.user',
+        },
+      },
+      where: {
+        customerId: customer.id,
+      },
+    });
+  }
 }
