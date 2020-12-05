@@ -25,7 +25,7 @@ export class MySQLresolver {
     const customer = await Customers.findOneOrFail({
       where: { userId: user.id },
     });
-    return Buildings.find({
+    return await Buildings.find({
       join: {
         alias: 'building',
         leftJoinAndSelect: {
@@ -54,7 +54,7 @@ export class MySQLresolver {
     const customer = await Customers.findOneOrFail({
       where: { userId: user.id },
     });
-    return Customers.findOneOrFail({
+    return await Customers.findOneOrFail({
       join: {
         alias: 'customer',
         leftJoinAndSelect: {
