@@ -51,18 +51,16 @@ export class MySQLresolver {
     const user = await Users.findOneOrFail({
       where: { email: email },
     });
-    const customer = await Customers.findOneOrFail({
-      where: { userId: user.id },
-    });
+    console.log('id', user.id);
     return await Customers.findOneOrFail({
+      where: {
+        userId: user.id,
+      },
       join: {
         alias: 'customer',
         leftJoinAndSelect: {
           user: 'customer.user',
         },
-      },
-      where: {
-        customerId: customer.id,
       },
     });
   }

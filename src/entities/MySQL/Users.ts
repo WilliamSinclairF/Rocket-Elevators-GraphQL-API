@@ -15,6 +15,7 @@ import { Customers } from './Customers';
 @Entity('users', { schema: process.env.MYSQLDB })
 @ObjectType('users')
 export class Users extends BaseEntity {
+  @Field(() => String)
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })
   id: string;
 

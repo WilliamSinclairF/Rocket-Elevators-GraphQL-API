@@ -22,7 +22,7 @@ export class Customers extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })
   id: string;
 
-  @Field({ nullable: true })
+  @Field(() => String)
   @Column('bigint', { name: 'user_id', nullable: true })
   userId: string;
 
